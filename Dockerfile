@@ -1,7 +1,7 @@
-FROM ubuntu:20.04
+FROM ubuntu:18.04
 
 # Install coq e python
-RUN apt-get update && apt-get install -y coq coqide python3-dev python3
+RUN apt-get update && apt-get install -y coq coqide python3-dev python3 libzmq3-dev build-essential python2.7
 RUN apt-get update && apt-get install -y python3-pip
 
 # Install java
@@ -37,7 +37,6 @@ RUN python3 -m sos_notebook.install
 
 # Configure Java
 COPY ijava-1.3.0 ./ijava-1.3.0
-RUN ls
 RUN cd ijava-1.3.0 && python3 install.py --sys-prefix
 
 # Configure Scala
@@ -50,7 +49,10 @@ RUN gem install iruby --pre
 RUN iruby register --force
 
 # Configure javascript
-#RUN npm install -g ijavascript
-#RUN ijsinstall
+RUN npm install -g ijavascript  --zmq-external
+RUN ijsinstall
+
+#clean up, no need to clobber the image with python2
+RUN apt-get autoremove -y python
 
 CMD jupyter notebook --ip=0.0.0.0 --port=8888 --allow-root --NotebookApp.token=''
