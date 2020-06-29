@@ -1,6 +1,6 @@
 * [<span class="iconify" data-icon="mdi-home"></span> Home](/docs/home.md)
 * <span class="iconify" data-icon="mdi-file-table"></span> Notas de Aula
-    * [Aula 1](/todo)
+    * [Aula 1](/docs/java.html)
     * [Aula 2](/todo)
     * [Aula 3](/todo)
     * [Aula 4](/todo)
