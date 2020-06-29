@@ -4,6 +4,6 @@ services:
         build:
             context: ./
         ports:
-            - "8888:8888"
+            - "${HTTP_PORT}:8888"
         volumes:
             - ./app:/usr/src/app
