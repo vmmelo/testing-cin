@@ -19,5 +19,5 @@
 Caso precise, solicite através de um issue a adição de outro kernel ou edite o Dockerfile e abra um pull request
 
 # Gerando arquivos Markdown pelo jupyter notebook
-Para criar novos arquivos, com o código compilado no notebook, basta fazer o download do arquivo com o formado .md
+Para criar novos arquivos, com o código compilado no notebook, basta fazer o download do arquivo com o formato .md
 ![ipynb2md](./assets/img/ipynb2md.png)
