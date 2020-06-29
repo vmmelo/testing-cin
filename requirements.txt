@@ -1,3 +1,7 @@
-numpy
-pandas
 jupyter
+coq-jupyter
+rise
+jupyter_nbextensions_configurator
+jupyter_contrib_nbextensions
+sos
+sos-notebook

@@ -1,13 +1,55 @@
-FROM python:3.7
-WORKDIR /usr/src
+FROM ubuntu:20.04
 
-COPY ./requirements.txt /usr/src/requirements.txt
-RUN pip install -r requirements.txt
+# Install coq e python
+RUN apt-get update && apt-get install -y coq coqide python3-dev python3
+RUN apt-get update && apt-get install -y python3-pip
 
-RUN jupyter nbextension install --user https://rawgithub.com/minrk/ipython_extensions/master/nbextensions/toc.js
-RUN curl -L https://rawgithub.com/minrk/ipython_extensions/master/nbextensions/toc.css > $(jupyter --data-dir)/nbextensions/toc.css
-RUN jupyter nbextension enable toc
+# Install java
+RUN apt-get update && apt-get install -y openjdk-11-jdk
 
+# Install scala
+RUN apt-get update && apt-get install -y wget
+RUN wget https://downloads.lightbend.com/scala/2.11.0/scala-2.11.0.tgz && tar -xvzf scala-2.11.0.tgz && rm scala-2.11.0.tgz
+ENV SCALA_HOME=/scala-2.11.0
+ENV export PATH=$PATH:$SCALA_HOME/bin:$PATH
+
+# Install Ruby
+RUN apt-get update && apt-get install -y libtool libffi-dev ruby ruby-dev make
+RUN apt-get update && apt-get install -y libzmq3-dev libczmq-dev
+
+# Install Nodejs
+RUN apt-get update && apt-get install -y nodejs npm
+
+# Install jupyter and python dependency
 WORKDIR /usr/src/app
+ADD requirements.txt /server/requirements.txt
+RUN pip3 install -r requirements.txt
 
-ENTRYPOINT ["jupyter", "notebook", "--ip=0.0.0.0", "--no-browser", "--allow-root"]
+# Configure jupyter plugin for install extension
+RUN jupyter contrib nbextension install --user
+RUN jupyter nbextensions_configurator enable --user
+
+# Configure coq (proof assistant)
+RUN python3 -m coq_jupyter.install
+
+# Configure sos (for multi lenguage into a notebook)
+RUN python3 -m sos_notebook.install
+
+# Configure Java
+ADD ijava-1.3.0 ./ijava-1.3.0
+RUN ls
+RUN cd ijava-1.3.0 && python3 install.py --sys-prefix
+
+# Configure Scala
+ADD almond .
+RUN ./almond --install
+
+# Configure Ruby
+RUN gem install cztop
+RUN gem install iruby --pre
+RUN iruby register --force
+
+# Configure javascript
+RUN npm install -g ijavascript
+RUN ijsinstall
+CMD jupyter notebook --ip=0.0.0.0 --port=8888 --allow-root --NotebookApp.token=''
