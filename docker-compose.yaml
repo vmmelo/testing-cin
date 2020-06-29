@@ -4,6 +4,22 @@ services:
         build:
             context: ./
         ports:
-            - "${HTTP_PORT}:8888"
+            - "${JUPYTER_PORT}:8888"
         volumes:
             - ./app:/usr/src/app
+        networks:
+            - default
+    docsify:
+        build:
+            context: ./
+            dockerfile: docsify.Dockerfile
+        volumes:
+            - ./:/usr/src
+        networks:
+            - default
+        ports:
+            - "${DOCSIFY_PORT}:3000"
+networks:
+    default:
+        external:
+            name: testing-cin-network
