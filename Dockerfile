@@ -50,7 +50,7 @@ RUN gem install iruby --pre
 RUN iruby register --force
 
 # Configure javascript
-RUN npm install -g ijavascript || true
-RUN ijsinstall
+#RUN npm install -g ijavascript
+#RUN ijsinstall
 
 CMD jupyter notebook --ip=0.0.0.0 --port=8888 --allow-root --NotebookApp.token=''
