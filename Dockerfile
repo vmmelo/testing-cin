@@ -22,7 +22,7 @@ RUN apt-get update && apt-get install -y nodejs npm
 
 # Install jupyter and python dependency
 WORKDIR /usr/src/app
-ADD requirements.txt /server/requirements.txt
+COPY ./requirements.txt /usr/src/app/requirements.txt
 RUN pip3 install -r requirements.txt
 
 # Configure jupyter plugin for install extension
@@ -36,7 +36,7 @@ RUN python3 -m coq_jupyter.install
 RUN python3 -m sos_notebook.install
 
 # Configure Java
-ADD ijava-1.3.0 ./ijava-1.3.0
+COPY ijava-1.3.0 ./ijava-1.3.0
 RUN ls
 RUN cd ijava-1.3.0 && python3 install.py --sys-prefix
 
@@ -50,6 +50,7 @@ RUN gem install iruby --pre
 RUN iruby register --force
 
 # Configure javascript
-RUN npm install -g ijavascript
+RUN npm install -g ijavascript || true
 RUN ijsinstall
+
 CMD jupyter notebook --ip=0.0.0.0 --port=8888 --allow-root --NotebookApp.token=''
