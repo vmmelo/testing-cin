@@ -6,3 +6,14 @@
 - Para rodar o projeto com o docker, basta executar o comando ```docker-compose up```
 - Para acessar o notebook, basta acessar o localhost da sua máquina, na porta definida no .env (por padrão apenas ```localhost```)
 - Para acessar o site, basta acessar o localhost da sua máquina, na porta definida no .env (por padrão ```localhost:8080```)
+
+# Kernels suportados no jupyter notebook
+- Java
+- Javascript
+- Python
+- Ruby
+- Coq
+- Scala
+- SoS (Script of Scripts)
+
+Caso precise, solicite através de um issue a adição de outro kernel ou edite o Dockerfile e abra um pull request
