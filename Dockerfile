@@ -2,9 +2,7 @@ FROM ubuntu:18.04
 
 # Install coq e python
 RUN apt-get update && apt-get install -y coq coqide python3-dev python3 libzmq3-dev build-essential python2.7
-RUN apt-get update && apt-get install -y python3-pip
-
-RUN pip install --no-cache notebook
+RUN apt-get update && apt-get install -y python3-pip && pip install --no-cache notebook
 
 # Install java
 RUN apt-get update && apt-get install -y openjdk-11-jdk
