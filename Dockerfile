@@ -58,5 +58,6 @@ RUN apt-get autoremove -y python
 RUN pip3 install --no-cache notebook
 ENV HOME=/tmp
 ENV WORKDIR=/tmp
+COPY ./app /tmp
 
 CMD jupyter notebook --ip=0.0.0.0 --port=8888 --allow-root --NotebookApp.token=''
