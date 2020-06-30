@@ -55,4 +55,8 @@ RUN ijsinstall
 #clean up, no need to clobber the image with python2
 RUN apt-get autoremove -y python
 
+RUN pip3 install --no-cache notebook
+ENV HOME=/tmp
+ENV WORKDIR=/tmp
+
 CMD jupyter notebook --ip=0.0.0.0 --port=8888 --allow-root --NotebookApp.token=''
