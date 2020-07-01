@@ -66,3 +66,4 @@ RUN adduser --disabled-password \
     --uid ${NB_UID} \
     ${NB_USER}
 WORKDIR ${HOME}
+COPY app /home/${NB_USER}
