@@ -66,4 +66,6 @@ RUN adduser --disabled-password \
     --uid ${NB_UID} \
     ${NB_USER}
 
+COPY app HOME
+
 
