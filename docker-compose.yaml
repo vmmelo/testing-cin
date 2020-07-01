@@ -3,6 +3,7 @@ services:
     app:
         build:
             context: ./
+            dockerfile: dev.Dockerfile
         ports:
             - "${JUPYTER_PORT}:8888"
         volumes:
