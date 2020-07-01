@@ -54,5 +54,3 @@ RUN ijsinstall
 
 #clean up, no need to clobber the image with python2
 RUN apt-get autoremove -y python
-
-CMD jupyter notebook --ip=0.0.0.0 --port=8888 --allow-root --NotebookApp.token=''
