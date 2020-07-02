@@ -4,6 +4,9 @@ services:
         build:
             context: ./
             dockerfile: Dockerfile
+            args:
+                - NB_USER:jovyan
+                - NB_UID:1000
         ports:
             - "${JUPYTER_PORT}:8888"
         volumes:
