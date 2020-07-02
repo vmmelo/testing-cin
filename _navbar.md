@@ -10,7 +10,6 @@
     * [Capítulo 2 - python](/chapters/python.md)
     * [Capítulo 3 - javascript](/chapters/javascript.md)
     * [Capítulo 4](/todo)
-* [<span class="iconify" data-icon="mdi-at"></span> Contato](/todo)
-* [<span class="iconify" data-icon="mdi-github"></span> Contribua](/todo)
+* [<span class="iconify" data-icon="mdi-github"></span> Notebook](https://mybinder.org/v2/gh/vmmelo/testing-cin/binder)
 
 
