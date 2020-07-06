@@ -7,17 +7,15 @@
 - Para acessar o notebook, basta acessar o localhost da sua máquina, na porta definida no .env (por padrão apenas ```localhost```)
 - Para acessar o site, basta acessar o localhost da sua máquina, na porta definida no .env (por padrão ```localhost:8080```)
 
-# Kernels suportados no jupyter notebook
-- Java
-- Javascript
-- Python
-- Ruby
-- Coq
-- Scala
-- SoS (Script of Scripts)
-
-Caso precise, solicite através de um issue a adição de outro kernel ou edite o Dockerfile e abra um pull request
+# Menu
+- No arquivo _navbar.md é possível adicionar novos links no menu seguindo o padrão que já está sendo usado com nome do link e caminho relativo para o destino.
+- É possível gerar arquivos markdown de um jupyter notebook (sessão abaixo) e assim gerar arquivos estáticos.
+- Existe um link para o binder que irá gerar um notebook online para todos os arquivos que estão dentro de /app que poderá ser editável pelo usuário
 
 # Gerando arquivos Markdown pelo jupyter notebook
 Para criar novos arquivos, com o código compilado no notebook, basta fazer o download do arquivo com o formato .md
 ![ipynb2md](./assets/img/ipynb2md.png)
+
+# Observações
+- Todos os arquivos markdown serão lidos pelo docsify que vai renderizar na tela sem necessidade de editar arquivos html, basta criar os links desses arquivos para que seja possível acessar através do menu (ou até de outro arquivo .md)
+- O github pages atualiza automaticamente a página de acordo com a branch master e todas as atualizações na branch serão refletidas lá.
