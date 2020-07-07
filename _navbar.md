@@ -10,6 +10,6 @@
     * [Capítulo 2 - python](/chapters/python.md)
     * [Capítulo 3 - javascript](/chapters/javascript.md)
     * [Capítulo 4](/todo)
-* [<span class="iconify" data-icon="mdi-github"></span> Notebook](https://mybinder.org/v2/gh/vmmelo/testing-cin/master)
+* [<span class="iconify" data-icon="mdi-github"></span> Notebook](https://mybinder.org/v2/gh/vmmelo/testing-cin/master?filepath=%2Fapp%2FLivro.ipynb)
 
 
