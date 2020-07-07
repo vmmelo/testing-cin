@@ -3,10 +3,13 @@ services:
     app:
         build:
             context: ./
+            dockerfile: dev.Dockerfile
+            args:
+                - NB_USER=jovyan
         ports:
             - "${JUPYTER_PORT}:8888"
         volumes:
-            - ./app:/usr/src/app
+            - ./app:/home/jovyan
         networks:
             - default
     docsify:
